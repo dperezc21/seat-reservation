@@ -5,7 +5,7 @@ import java.util.List;
 
 public class PrintSeatsMap {
 
-    private static Integer numberRowsCurrent = 1;
+    private static Integer numberRowsCurrent;
 
     public static void print(String[][] matrix) {
         StringBuilder builder = new StringBuilder();
@@ -17,6 +17,7 @@ public class PrintSeatsMap {
         System.out.println();
 
         showColumnLetters(list.size());
+        numberRowsCurrent = 1;
         for (String[] strings : list) {
             StringBuilder row = new StringBuilder();
             for (String string : strings) {
@@ -35,7 +36,7 @@ public class PrintSeatsMap {
 
     private static void showColumnLetters(int numberColumns) {
         System.out.print("  ");
-        for (char i = 'a'; i <= ('a' + numberColumns); i++) {
+        for (char i = 'a'; i <= ('a' + numberColumns) - 1; i++) {
             System.out.print(i + " ");
         }
         System.out.println();
