@@ -1,7 +1,7 @@
 package org.test.models;
 
 public enum SeatState {
-    L("free"), X("busy");
+    FREE("L"), BUSY("X");
 
     private final String state;
 
