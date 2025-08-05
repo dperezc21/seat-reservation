@@ -1,32 +1,26 @@
 package org.test;
 
-import java.util.Arrays;
-import java.util.Scanner;
+import org.test.models.SeatState;
 
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     public static void main(String[] args) {
 
-        Scanner scanner = new Scanner(System.in);
+        try {
+            /*Scanner scanner = new Scanner(System.in);
+            System.out.print("Digita el numero de filas: ");*/
+            int numberRows = 10;//scanner.nextInt();
+            /*System.out.print("Digita el numero asientos: ");*/
+            int numberColumns = 10; //scanner.nextInt();
+            System.out.println();
 
-        int numberRows = scanner.nextInt();
-        System.out.println("Digita el numero de filas: ");
+            String[][] matrix = SeatMatrixMap.buildSeatMatrix(SeatState.L.getState(), numberRows, numberColumns);
+            SeatsList.buildSeatsReservation(SeatState.L, numberRows, numberColumns);
 
-        int numberColumns = scanner.nextInt();
-        System.out.println("Digita el numero de columnas: ");
-
-        System.out.println("rows "+ numberRows);
-        System.out.println("columns "+ numberColumns);
-
-        String[][] matrix = new String[numberRows][numberColumns];
-
-        /*for (int i = 0; i < numberRows; i++) {
-            for (int j = 0; j < numberColumns; j++) {
-                matrix[i][j] = "L";
-            }
+            PrintSeatsMap.print(matrix);
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-
-        System.out.println(matrix[numberRows - 1][numberColumns - 1]);*/
     }
 }
