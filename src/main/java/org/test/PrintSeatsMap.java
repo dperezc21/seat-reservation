@@ -16,26 +16,29 @@ public class PrintSeatsMap {
         System.out.println("X -> Asientos Ocupados");
         System.out.println();
 
-        showColumnLetters(list.size());
+        showColumnLetters(list.get(0).length, list.size());
         numberRowsCurrent = 1;
-        for (String[] strings : list) {
+        for (String[] stringsList : list) {
             StringBuilder row = new StringBuilder();
-            for (String string : strings) {
-                row.append(string).append(" ");
+            for (String rows : stringsList) {
+                row.append(rows).append(" ");
             }
-            builder.append(concatRowValue(row)).append("\n");
+            builder.append(concatRowValue(row, list.size())).append("\n");
         }
         System.out.println(builder);
     }
 
-    private static String concatRowValue(StringBuilder row) {
-        row.insert(0, numberRowsCurrent + " ");
+    private static String concatRowValue(StringBuilder row, int rowsLen) {
+        int spacesNumber = String.valueOf(rowsLen).split("").length;
+        int len = String.valueOf(numberRowsCurrent).split("").length;
+        row.insert(0, numberRowsCurrent + " ".repeat(spacesNumber - len).concat(" "));
         numberRowsCurrent++;
         return row.toString();
     }
 
-    private static void showColumnLetters(int numberColumns) {
-        System.out.print("  ");
+    private static void showColumnLetters(int numberColumns, int columnsNumber) {
+        int l = String.valueOf(columnsNumber).split("").length;
+        System.out.print(" ".repeat(l).concat(" "));
         for (char i = 'a'; i <= ('a' + numberColumns) - 1; i++) {
             System.out.print(i + " ");
         }
