@@ -4,27 +4,34 @@ import org.test.interfaces.Menu;
 import org.test.models.SeatState;
 
 import java.util.Scanner;
+import java.util.logging.Logger;
 
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
+    private static Logger logger = Logger.getLogger(Main.class.getName());
     public static void main(String[] args) {
 
         try {
             Scanner scanner = new Scanner(System.in);
-            /*System.out.print("Digita el numero de filas: ");*/
-            int numberRows = 10;//scanner.nextInt();
-            /*System.out.print("Digita el numero asientos: ");*/
-            int numberColumns = 10; //scanner.nextInt();
+            int numberRows = 10;
+            int numberColumns = 10;
             System.out.println();
 
-            String[][] matrix = SeatMatrixMap.buildSeatMatrix(SeatState.FREE.getState(), numberRows, numberColumns);
+            String[][] matrix = SeatMatrixMap.buildInitialSeatMatrix(SeatState.FREE.getState(), numberRows, numberColumns);
             SeatsList.buildSeatsReservation(SeatState.FREE, numberRows, numberColumns);
 
             Menu menuReservation = new MenuReservation();
+            SeatReservation reservation = new SeatReservation();
             menuReservation.show();
             int optionSelected = scanner.nextInt();
             while (optionSelected != 3) {
+                if(optionSelected == 1) {
+                    System.out.print("typing the seat code: ");
+                    String seatCode = scanner.next();
+                    reservation.reserve(seatCode);
+                    matrix = SeatMatrixMap.buildSeatMatrix(SeatsList.getSeats());
+                }
                 if(optionSelected == 2) PrintSeatsMap.print(matrix);
                 menuReservation.show();
                 optionSelected = scanner.nextInt();
@@ -32,7 +39,7 @@ public class Main {
             }
 
         } catch (Exception e) {
-            e.printStackTrace();
+            logger.info(e.getMessage());
         }
     }
 }
