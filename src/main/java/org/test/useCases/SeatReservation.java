@@ -12,10 +12,10 @@ public class SeatReservation {
             for (int i = 0; i < matrix.length; i++) {
                 for (int j = 0; j < matrix[i].length; j++) {
                     Seat seatCurrent = matrix[i][j];
-                    if(seatCurrent.getState().equals(SeatState.BUSY) && seatCurrent.getIdentifier().equals(code))
+                    if(seatCurrent.getState().equals(SeatState.OCCUPIED) && seatCurrent.getIdentifier().equals(code))
                         throw new SeatStateBusyException("seat busy, try again");
                     if(seatCurrent.getIdentifier().equals(code)) {
-                        SeatsList.getSeats()[i][j].setState(SeatState.BUSY);
+                        SeatsList.getSeats()[i][j].setState(SeatState.OCCUPIED);
                     }
                 }
             }
