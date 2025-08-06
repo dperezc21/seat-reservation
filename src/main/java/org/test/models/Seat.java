@@ -18,6 +18,10 @@ public class Seat {
         return state;
     }
 
+    public void setState(SeatState state) {
+        this.state = state;
+    }
+
     @Override
     public String toString() {
         return "Seat{" +
