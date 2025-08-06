@@ -11,6 +11,7 @@ This system simulates reserving seats in an amphitheater composed of multiple ro
 
 - View the status of the seats.
 - Reserve a specific seat.
+- Cancel reservation on specific seat.
 - Map of available and occupied seats
 
 The system is designed to run on a console or terminal and does not use any external storage systems (such as databases or files).
