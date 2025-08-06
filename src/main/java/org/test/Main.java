@@ -11,10 +11,11 @@ import java.util.logging.Logger;
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     private static Logger logger = Logger.getLogger(Main.class.getName());
+    private static Scanner scanner = new Scanner(System.in);
     public static void main(String[] args) {
 
         try {
-            Scanner scanner = new Scanner(System.in);
+
             int numberRows = 10;
             int numberColumns = 10;
             System.out.println();
@@ -24,16 +25,19 @@ public class Main {
 
             Menu menuReservation = new MenuReservation();
             SeatReservation reservation = new SeatReservation();
+            CancelReservation cancelReservation = new CancelReservation();
             menuReservation.show();
             int optionSelected = scanner.nextInt();
-            while (optionSelected != 3) {
+            while (optionSelected != 4) {
                 if(optionSelected == 1) {
-                    System.out.print("typing the seat code: ");
-                    String seatCode = scanner.next();
-                    reservation.reserve(seatCode);
+                    reservation.reserve(receiveCode());
                     matrix = SeatMatrixMap.buildSeatMatrix(SeatsList.getSeats());
                 }
-                if(optionSelected == 2) PrintSeatsMap.print(matrix);
+                if(optionSelected == 3) PrintSeatsMap.print(matrix);
+                if(optionSelected == 2) {
+                    cancelReservation.cancelSeatReservation(receiveCode());
+                    matrix = SeatMatrixMap.buildSeatMatrix(SeatsList.getSeats());
+                }
                 menuReservation.show();
                 optionSelected = scanner.nextInt();
                 System.out.println();
@@ -42,5 +46,10 @@ public class Main {
         } catch (Exception e) {
             logger.info(e.getMessage());
         }
+    }
+
+    public static String receiveCode() {
+        System.out.print("typing the seat code: ");
+        return scanner.next();
     }
 }
