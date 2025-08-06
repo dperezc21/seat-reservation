@@ -1,8 +1,7 @@
-package org.test;
+package org.test.useCases;
 
 import org.test.models.Seat;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 

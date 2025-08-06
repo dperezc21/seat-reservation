@@ -1,5 +1,6 @@
-package org.test;
+package org.test.useCases;
 
+import org.test.exceptions.SeatStateBusyException;
 import org.test.models.Seat;
 import org.test.models.SeatState;
 

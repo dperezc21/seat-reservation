@@ -1,4 +1,4 @@
-package org.test;
+package org.test.useCases;
 
 public class ColorTextFormat {
     private static final String ANSI_RED = "\u001B[31m";

@@ -2,6 +2,7 @@ package org.test;
 
 import org.test.interfaces.Menu;
 import org.test.models.SeatState;
+import org.test.useCases.*;
 
 import java.util.Scanner;
 import java.util.logging.Logger;

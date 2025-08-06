@@ -1,4 +1,4 @@
-package org.test;
+package org.test.useCases;
 
 import java.util.Arrays;
 import java.util.List;
