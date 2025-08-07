@@ -1,8 +1,5 @@
 package org.test.useCases;
 
-import java.util.Arrays;
-import java.util.List;
-
 public class PrintSeatsMap {
 
     private static Integer numberRowsCurrent;
@@ -10,20 +7,18 @@ public class PrintSeatsMap {
     public static void print(String[][] matrix) {
         StringBuilder builder = new StringBuilder();
 
-        List<String[]> list = Arrays.stream(matrix).toList();
-
         System.out.println("L -> Asientos libres");
         System.out.println("X -> Asientos Ocupados");
         System.out.println();
-
-        showColumnLetters(list.get(0).length, list.size());
+        int rowLength = matrix.length;
+        showColumnLetters(matrix[0].length, rowLength);
         numberRowsCurrent = 1;
-        for (String[] stringsList : list) {
+        for (String[] rows: matrix) {
             StringBuilder row = new StringBuilder();
-            for (String rows : stringsList) {
-                row.append(rows).append(" ");
+            for (String column: rows) {
+                row.append(column).append(" ");
             }
-            builder.append(concatRowValue(row, list.size())).append("\n");
+            builder.append(concatRowValue(row, rowLength)).append("\n");
         }
         System.out.println(builder);
     }
