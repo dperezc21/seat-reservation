@@ -16,6 +16,7 @@ public class SeatReservation {
                         throw new SeatStateBusyException("seat busy, try again");
                     if(seatCurrent.getIdentifier().equals(code)) {
                         SeatsList.getSeats()[i][j].setState(SeatState.OCCUPIED);
+                        break;
                     }
                 }
             }
